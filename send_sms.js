@@ -1,15 +1,17 @@
 const envFile = require('dotenv').config()
 
-const customerNum = process.argv[2];
-const accountSid = process.env.twilSid;
-const authToken = process.env.twilAuthTok;
-const client = require("twilio")(accountSid, authToken);
+// const customerNum = process.argv[2];
+const TWILIO_ACCOUNT_SID = process.env.twilSid;
+const TWILIO_AUTH_TOKEN = process.env.twilAuthTok;
+const client = require("twilio")(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN);
 
-client.messages 
+module.exports = function testMessage (varNum) {
+ return client.messages 
   .create({
-    body: "Sent with button",
+    body: "We debug real good",
     from: "+17782007622",
-    to: customerNum
+    to: +16043151860
 })
 .then(message => console.log(message.sid))
 .done();
+}
