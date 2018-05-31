@@ -3,21 +3,20 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
 
+app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
-let eatERS = function (req, res, next) {
-  req.eatERS = "Tacos";
-  next();
-}
-
-app.use(eatERS);
+app.get("/test", (req, res) => {
+  res.send("Jennnnnnnnifer");
+});
 
 app.get("/", (req, res) => {
-  let eatERS = req.eatERS
-  let 
-  res.send(eatERS);
-});
+  console.log("we here bitch")
+  res.render("homepage");
+})
+
+
 
 app.listen(PORT, () => {
   console.log("Listening");
