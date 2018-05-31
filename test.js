@@ -26,8 +26,9 @@ app.post("/order", (req, res) => {
 
 app.post("/sms", (req, res) => {
   const twiml = new MessagingResponse();
-
-  twiml.message("we are awesome");
+  console.log(req.body.Body);
+  console.log(req.body.FromCountry);
+  twiml.message(req.body.Body);
   res.writeHead(200, {"Content-Type": "text/xml"});
   res.end(twiml.toString());
 })
