@@ -2,6 +2,7 @@ const PORT = 8080;
 const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
+const MessagingResponse = require("twilio").twiml.MessagingResponse;
 
 const msg = require("./send_sms.js");
 
@@ -21,6 +22,14 @@ app.get("/", (req, res) => {
 app.post("/order", (req, res) => {
   msg(req.body.text);
   res.redirect("/test");
+})
+
+app.post("/sms", (req, res) => {
+  const twiml = new MessagingResponse();
+
+  twiml.message("we are awesome");
+  res.writeHead(200, {"Content-Type": "text/xml"});
+  res.end(twiml.toString());
 })
 
 app.listen(PORT, () => {
