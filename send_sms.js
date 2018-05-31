@@ -8,9 +8,9 @@ const client = require("twilio")(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN);
 module.exports = function testMessage (varNum) {
  return client.messages 
   .create({
-    body: "We debug real good",
+    body: "An eater want yerr FOOOOOOD!",
     from: "+17782007622",
-    to: +16043151860
+    to: varNum
 })
 .then(message => console.log(message.sid))
 .done();

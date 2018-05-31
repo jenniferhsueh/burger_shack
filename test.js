@@ -19,7 +19,7 @@ app.get("/", (req, res) => {
 })
 
 app.post("/order", (req, res) => {
-  msg();
+  msg(req.body.text);
   res.redirect("/test");
 })
 
