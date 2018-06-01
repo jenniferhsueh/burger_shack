@@ -3,7 +3,7 @@ require('dotenv').config();
 module.exports = {
 
   development: {
-    client: 'postgresql',
+    client: "postgresql",
     connection: {
       database: process.env.DB_NAME,
       user: process.env.DB_USER,
@@ -11,3 +11,10 @@ module.exports = {
     }
   },
 };
+
+// migrations: {
+//   directory: "./db/migrations"
+// },
+// seeds: {
+//   directory: "./db/seeds"
+// }

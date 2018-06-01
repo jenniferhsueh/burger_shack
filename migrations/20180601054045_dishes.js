@@ -4,7 +4,7 @@ exports.up = function(knex, Promise) {
     knex.schema.createTable('dishes', function(table){
       table.increments('id').primary();
       table.string('name');
-      table.integer('price');
+      table.decimal('price');
     })
   ])
 };
