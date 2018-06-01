@@ -3,11 +3,18 @@
 <head>
   <meta charset="utf-8" />
   <title>Twilio Button</title>
+  <script
+    src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous">
+  </script>
+  <script type="text/javascript" src="/placeOrder.js"></script>
+
 </head>
 <body>
   <form method="POST" action="/order">
     <textarea name="text" placeholder="Phone Number"></textarea>
-    <input type="submit" value="Feed me">
+    <input type="submit" value="Place Order">
   </form>
 </body>
 </html>
