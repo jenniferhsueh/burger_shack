@@ -1,4 +1,4 @@
-<style>
+
   /* Remove the navbar's default margin-bottom and rounded borders */ 
   .navbar {
     margin-bottom: 0;
@@ -89,4 +89,7 @@
     margin: 0 0 11px;
 }
 
-</style>
+.lead
+{
+color: blue;
+}

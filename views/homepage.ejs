@@ -9,25 +9,30 @@
 
   <!-- App CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+  <link rel="stylesheet" type="text/css" media="screen" href="styles.css" />
+
 
   <!-- External JS (jQuery)-->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
   <!-- App JS (DOM manipulation scripts)-->
-  <script src="main.js"></script>
+  <script src="/pullDishes.js"></script>
 
 </head>
 <body>
-  <% include partials/_styles.ejs %>
-  <% include partials/_navBar.ejs %>
-
+  <nav>
+      <% include partials/_navBar.ejs %>
+  </nav>
+  <section id="menu-items">
     <% include partials/_dishes.ejs %>
+  </section>
+  <section id="order-list">
     <% include partials/_orderList.ejs %>
-    </div>
-  </div>
-</div>
-<% include partials/_footer.ejs %>
+  </section>
+  <footer>
+    <% include partials/_footer.ejs %>
+  </footer>
+
 </body>
 </html>
