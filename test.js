@@ -10,6 +10,11 @@ app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
+const knexConfig = require('./knexfile').development;
+const knex = require('knex')(knexConfig);
+const userService = require('./data/user-svc')(knex);
+
+
 app.get("/test", (req, res) => {
   res.send("Jennnnnnnnifer");
 });
@@ -20,6 +25,10 @@ app.get("/twilio_science", (req, res) => {
 });
 
 app.get("/", (req, res) => {
+  userService.getDishName(1)
+    .then((result) => {
+      console.log(result);
+    });
   res.render("homepage");
 });
 
@@ -29,11 +38,15 @@ app.post("/order", (req, res) => {
 })
 
 app.post("/sms", (req, res) => {
-  const twiml = new MessagingResponse();
-  twiml.message(req.body.Body); //sends the msg jenn sends to twilio back to jenn - change to cust
-  // console.log(req.body.From);
+  // console.log('from sms', req.body);
+  // const twiml = new MessagingResponse();
+  let reply = req.body.Body;
+  let arr = reply.split(' ');
+  console.log(arr)
+  // console.log(req.body.Body);
+  //Send req.body.Body to knex db
   res.writeHead(200, {"Content-Type": "text/xml"});
-  res.end(twiml.toString());
+  // res.end(twiml.toString());
 })
 
 

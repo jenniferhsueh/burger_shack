@@ -6,6 +6,7 @@ exports.up = function(knex, Promise) {
       table.foreign('dishes_id').references('dishes.id');
       table.integer('orders_id');
       table.foreign('orders_id').references('orders.id');
+      table.integer('eta').nullable();
     })
   ])
 };

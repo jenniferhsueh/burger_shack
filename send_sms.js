@@ -10,7 +10,7 @@ module.exports = function testMessage (varNum) {
   .create({
     body: "An eater want yerr FOOOOOOD!" + varNum,
     from: "+17782007622",
-    to: "+16043624496"
+    to: "+16043352754"
 })
 .then(message => console.log(message.sid))
 .done();
