@@ -14,7 +14,6 @@ function makeUserService(knex){
     return knex('orders')
       .where('id', id)
       .first('*');
-
   }
 
   return {

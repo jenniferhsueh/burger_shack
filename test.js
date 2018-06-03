@@ -20,12 +20,11 @@ app.get("/test", (req, res) => {
 });
 
 app.get("/twilio_button", (req, res) => {
-  console.log("we here bitch");
   res.render("twilioButton");
 });
 
 app.get("/", (req, res) => {
-  userService.getDishName(1)
+  userService.getDishName(1) //
     .then((result) => {
       // console.log(result);
     });
@@ -33,29 +32,33 @@ app.get("/", (req, res) => {
 });
 
 app.post("/order", (req, res) => {
-  let textToRest = req.body.customerMsg;
+  let custNumber = req.body.customerMsg;
   let custName = req.body.customerName;
-  msg(`${custName}, ${textToRest}`); //sends to chibweeeeee
-  console.log(textToRest, custName)
+  msg.smsOrder(`${custName}, ${custNumber}`); //sends to chibweeeeee
+  console.log(custNumber, custName)
   res.end();
 })
 
 app.post("/sms", (req, res) => {
   // console.log('from sms', req.body);
   // const twiml = new MessagingResponse();
-  let reply = req.body.Body;
+  let reply = req.body.Body; 
   let arr = reply.split(' ');
-  console.log(arr)
-  // console.log(req.body.Body);
-  //Send req.body.Body to knex db
+  let restNum = req.body.From;
+  console.log(`restaurant number is ${restNum}`)
+  msg.smsPickupTime(arr[1]);
+  console.log(`ORDER_ID '${arr[0]}' PICKUP_TIME '${arr[1]}'`)
+  //insert into db
   res.writeHead(200, {"Content-Type": "text/xml"});
-  // res.end(twiml.toString());
+})
+
+//get the eta from database (endpoint will change to match data location)
+app.get("/sms", (req, res) => {
+  console.log('from sms endpoint', req.body)
+  res.end()
 })
 
 
-
-
-
 app.listen(PORT, () => {
-  console.log("Listening");
+  console.log(`Listening to PORT ${PORT}`);
 })
