@@ -19,8 +19,8 @@ app.get("/test", (req, res) => {
   res.send("Jennnnnnnnifer");
 });
 
-app.get("/twilio_science", (req, res) => {
-  console.log("we here bitch")
+app.get("/twilio_button", (req, res) => {
+  console.log("we here bitch");
   res.render("twilioButton");
 });
 
@@ -33,7 +33,7 @@ app.get("/", (req, res) => {
 });
 
 app.post("/order", (req, res) => {
-  msg(req.body.text); //sends to restaurant(jenn)
+  msg(req.body.text); //sends to chibweeeeee
   res.redirect("/test");
 })
 
