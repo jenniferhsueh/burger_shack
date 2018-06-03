@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Little Italy</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- App CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+  <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+
+  <!-- External JS (jQuery)-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <!-- App JS (DOM manipulation scripts)-->
+  <script src="main.js"></script>
+
+</head>
+<body>
+  <header>
+    <h1 class="text-center bg-primary text-light">Little Italy <small>(the part of Italy where no one eats pasta, but does eat burgers).</small></h1>
+  </header>
+ 
+  <section class="row">
+    <div class="menu col-8 col-sm-9">
+      <div class="row" id='food-goes-here'>
+        <!-- <div class="col">
+          <h3 class="label text-center">Burger</h3>
+          <img src="/pics/burger.png" class="dish" alt="burger">
+          <h5 class="price text-center">$10.99</h5>
+        </div>
+        <div class="col">
+          <h3 class="label text-center">Fries</h3>
+          <img src="/pics/fries.png" class="dish" alt="fries">
+          <h5 class="price text-center">$5.99</h5>
+        </div>
+        <div class="col">
+          <h3 class="label text-center">Salad</h3>
+          <img src="/pics/salad.png" class="dish" alt="salad">
+          <h5 class="price text-center">$7.50</h5>
+        </div>
+        <div class="col">
+          <h3 class="label text-center">Sandwich</h3>
+          <img src="/pics/sandwich.png" class="dish" alt="sandwich">
+          <h5 class="price text-center">$9.99</h5>
+        </div>
+        <div class="col">
+          <h3 class="label text-center">Nachos</h3>
+          <img src="/pics/nachos.png" class="dish" alt="nachos">
+          <h5 class="price text-center">$12.99</h5>
+        </div>
+        <div class="col">
+          <h3 class="label text-center">Poutine</h3>
+          <img src="/pics/poutine.png" class="dish" alt="poutine">
+          <h5 class="price text-center">$6.50</h5>
+        </div>
+        <div class="col">
+          <h3 class="label text-center">Juice</h3>
+          <img src="/pics/juice.png" class="dish" alt="juice">
+          <h5 class="price text-center">$2</h5>
+        </div>
+        <div class="col">
+          <h3 class="label text-center">Pop</h3>
+          <img src="/pics/pop.png" class="dish" alt="pop">
+          <h5 class="price text-center">$2</h5>
+        </div>
+        <div class="col"></div> -->
+      </div>
+    </div>
+    <div class="checkout h-100 col-4 col-sm-3 text-center bg-dark">
+      <h2 class="text-light">Checkout</h2>
+      <div class="btn-group-vertical" data-toggle="buttons">
+        <img src="/pics/salad.png" class="dish img.-fluid" alt="salad">
+        <h3 class="text-light text-center">Total:</h3>
+        <br>
+        <input type="text" placeholder="Name" class="form-control">
+        <br>
+        <input type="text" class="form-control" id="phone" placeholder="Please enter a phone number">
+        <small id="emailHelp" class="form-text text-muted">Phone number is required for checkout</small>
+        <br>
+        <button type="button" class="btn btn-primary">Place Order</button>
+        <br>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  $(function(){
+    var food = ['Burger', 'Salad', 'Fries']
+    var $foodGoesHere = $('#food-goes-here');
+    food.forEach(function(item){
+      $foodGoesHere.append(`<div class="col">
+          <h3 class="label text-center">${item}</h3>
+          <img src="/pics/${item.toLowerCase()}.png" class="dish" alt="${item}">
+          <h5 class="price text-center">$10.99</h5>
+        </div>`);
+    })
+  })
+</script>
+
+<section id="orderList" class="">
+    <% include partials/_orderList.ejs %>
+  </section> 
+
+<footer class="">
+    <% include partials/_footer.ejs %>
+  </footer> 
+</body>
+</html>

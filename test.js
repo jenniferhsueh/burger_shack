@@ -27,14 +27,17 @@ app.get("/twilio_button", (req, res) => {
 app.get("/", (req, res) => {
   userService.getDishName(1)
     .then((result) => {
-      console.log(result);
+      // console.log(result);
     });
   res.render("homepage");
 });
 
 app.post("/order", (req, res) => {
-  msg(req.body.text); //sends to chibweeeeee
-  res.redirect("/test");
+  let textToRest = req.body.customerMsg;
+  let custName = req.body.customerName;
+  msg(`New order from ${custName}, ${textToRest}`); //sends to chibweeeeee
+  console.log(textToRest, custName)
+  res.end();
 })
 
 app.post("/sms", (req, res) => {
