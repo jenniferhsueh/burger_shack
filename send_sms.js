@@ -8,7 +8,7 @@ const client = require("twilio")(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN);
 module.exports = function testMessage (varNum) {
  return client.messages 
   .create({
-    body: "An eater want yerr FOOOOOOD!" + varNum,
+    body: `New order from ${varNum}`,
     from: "+17782007622",
     to: "+16043352754"
 })

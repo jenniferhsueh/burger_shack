@@ -35,7 +35,7 @@ app.get("/", (req, res) => {
 app.post("/order", (req, res) => {
   let textToRest = req.body.customerMsg;
   let custName = req.body.customerName;
-  msg(`New order from ${custName}, ${textToRest}`); //sends to chibweeeeee
+  msg(`${custName}, ${textToRest}`); //sends to chibweeeeee
   console.log(textToRest, custName)
   res.end();
 })
