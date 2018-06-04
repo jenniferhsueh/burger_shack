@@ -10,23 +10,51 @@ $(document).ready(function() {
     placeOrder(order);
   });
   
-  let getEta = function () {
-    setInterval(() => {
+  let etaCheck = setInterval(function getEta() {
       $.ajax({
         url: "/orders/eta",
         method: "GET",
         success: function (eta) {
-          let etaSent = $(`<h3>`).addClass("text-light").text(`Pick up your order in ${eta} `);
-          console.log("LOG: order eta is",eta);
-          $(".checkout").append(etaSent)
-          stopGetEta(); //need to stop polling when eta is received.
+          console.log("EEEETTTTTTAAAAAAA",eta)
+          if(!eta) {
+            console.log("Waiting on pickup time. It is now:",eta);
+          } else {
+            let etaSent = $(`<h3>`).addClass("text-light").text(`Pick up your order in ${eta} `);
+            console.log("LOG: order eta is",eta);
+            $(".checkout").append(etaSent)
+            clearInterval(etaCheck)
+            // stopGetEta(); //need to stop polling when eta is received.
+          }
         },
         error: function(err) {
           console.log(err);
         }
-      });
-    }, 5000);
-  }
+      })
+  }, 5000);
+
+  // let getEta = function () {
+  //   setInterval(() => {
+  //     $.ajax({
+  //       url: "/orders/eta",
+  //       method: "GET",
+  //       success: function (eta) {
+  //         console.log("EEEETTTTTTAAAAAAA",eta)
+  //         if(!eta) {
+  //           console.log("Waiting on pickup time. It is now:",eta);
+  //         } else {
+  //           let etaSent = $(`<h3>`).addClass("text-light").text(`Pick up your order in ${eta} `);
+  //           console.log("LOG: order eta is",eta);
+  //           $(".checkout").append(etaSent)
+  //           clearInterval(getEta)
+  //           // stopGetEta(); //need to stop polling when eta is received.
+  //         }
+  //       },
+  //       error: function(err) {
+  //         console.log(err);
+  //       }
+  //     });
+  //   }, 5000);
+  // }
   
   let stopGetEta = function () {
     clearInterval(getEta)
@@ -43,7 +71,7 @@ $(document).ready(function() {
         let orderSent = $(`<h3>`).addClass("text-success").text(`Your order has been placed`)
         $(".checkout-items").empty(); //empty the cart
         $(".checkout").append(orderSent)
-        getEta();
+        etaCheck;
       },
       error: function(err) {
         console.log(err);

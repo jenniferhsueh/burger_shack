@@ -23,10 +23,6 @@ app.get("/twilio_button", (req, res) => {
 });
 
 app.get("/", (req, res) => {
-  userService.getDishName(1) //
-    .then((result) => {
-      console.log(result);
-    });
   res.render("homepage");
 });
 
@@ -62,13 +58,12 @@ app.post("/sms", (req, res) => {
 //get the eta from database (endpoint will change to match data location)
 app.get("/orders/eta", (req, res) => {
   userService.getOrderId().then(function(data){
-    if(data) {
+    if(!data[0].eta) {
+      res.end();
+    } else {
       console.log('CURRENT ETA',data[0].eta);
       res.send(data[0].eta.toString());
-    } else {
-      res.end();
     }
-    
     // res.end();
   });
   
