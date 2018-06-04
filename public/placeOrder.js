@@ -19,9 +19,9 @@ $(document).ready(function() {
           if(!eta) {
             console.log("Waiting on pickup time. It is now:",eta);
           } else {
-            let etaSent = $(`<h3>`).addClass("text-light").text(`Pick up your order in ${eta} minutes`);
+            let etaSent = $(`<h2>`).addClass("text-light text-center").text(`Pick up your order in ${eta} minutes`);
             console.log("LOG: order eta is",eta);
-            $(".checkout").append(etaSent)
+            $(".eta-space").append(etaSent)
             clearInterval(etaCheck)
             // stopGetEta(); //need to stop polling when eta is received.
           }
@@ -91,10 +91,10 @@ $(document).ready(function() {
       method: "POST", //goes to test.js - finds this method/route
       data: order,
       success: function() {
-        let orderSent = $(`<h3>`).addClass("text-success").text(`Your order has been placed`)
-        $(".checkout-items").empty(); //empty the cart
-        $(".checkout").append(orderSent);
-        
+        let orderSent = $(`<h2>`).addClass("text-success").text(`Your order has been placed`)
+        // $(".checkout-items").empty(); //empty the cart
+        $(".eta-space").append(orderSent);
+        $(".custInput").val("");
         etaCheck;
       },
       error: function(err) {

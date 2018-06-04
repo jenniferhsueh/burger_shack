@@ -42,14 +42,12 @@
       <!-- <div class="btn-group-vertical" data-toggle="buttons"> -->
         <div class="checkout-items">
           <img src="/pics/salad.png" class="dish img.-fluid" alt="salad">
-          <img src="/pics/salad.png" class="dish img.-fluid" alt="salad">
-          <!-- <img src="/pics/salad.png" class="dish img.-fluid" alt="salad">
-          <img src="/pics/salad.png" class="dish img.-fluid" alt="salad"> -->
+          <img src="/pics/nachos.png" class="dish img.-fluid" alt="nachos">
         </div>
         
 
     
-        <h3 class="text-light text-center">Total:</h3>
+        <h3 class="text-light text-center"></h3>
         <br>
         <!-- <input type="text" placeholder="Name" class="form-control">
         <br>
@@ -57,12 +55,13 @@
         <small class="form-text text-muted">Phone number is required for checkout</small>
         <br>
         <button type="submit" class="order btn btn-danger">Place Order</button> -->
+        <div class="eta-space"></div>
 
         <form method="POST" action="/order">
           <!-- <textarea name="text" placeholder="Phone Number"></textarea> -->
-          <input name="customerName" type="text" placeholder="Name" class="form-control">
+          <input name="customerName" type="text" placeholder="Name" class="custInput form-control">
           <br>
-          <input id="phone" name="customerNum" type="text" class="form-control" placeholder="Enter a phone number">
+          <input id="phone" name="customerNum" type="text" class="custInput form-control" placeholder="Enter a phone number">
           <small class="form-text text-muted">Phone number required</small>
           </br>
           <input class="order btn btn-danger" type="submit" value="Place Order">
@@ -76,13 +75,13 @@
 
 <script>
   $(function(){
-    var food = ["Burger", "Fries", "Salad", "Sandwich", "Nachos", "Poutine", "Pop", "Juice"]
+    var food = ["Burger", "Fries", "Sandwich", "Salad", "Nachos", "Poutine", "Pop", "Juice", "icecream"]
     var $foodGoesHere = $('#food-goes-here');
     food.forEach(function(item){
       $foodGoesHere.append(`<div class="col">
         <h3 class="label text-center">${item}</h3>
         <img src="/pics/${item.toLowerCase()}.png" class="dish" alt="${item}">
-        <h5 class="price text-center">$10.99</h5>
+       
       </div>`);
     })
   })
