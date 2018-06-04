@@ -32,19 +32,19 @@ $(document).ready(function() {
     clearInterval(getEta)
   }
 
-  
-
-  let orderSent = $(`<h3>`).addClass("text-success").text(`Your order has been placed`);
+  // let orderSent = $(`<h3>`).addClass("text-success").text(`Your order has been placed`);
 
   function placeOrder(order) {
     $.ajax({ //makes an http requst 
       url: "/order", //use this route to send text
       method: "POST", //goes to test.js - finds this method/route
       data: order,
-      success: function() {
+      success: function(data) {
+        console.log(data);
+        let orderSent = $(`<h3>`).addClass("text-success").text(`Your order has been placed, eta ${data}`)
         $(".checkout-items").empty(); //empty the cart
         $(".checkout").append(orderSent)
-        getEta();
+        
       },
       error: function(err) {
         console.log(err);

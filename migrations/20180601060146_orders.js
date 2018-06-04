@@ -4,6 +4,7 @@ exports.up = function(knex, Promise) {
       table.increments('id').primary();
       table.string('name');
       table.string('phone_number');
+      table.integer('eta').nullable();
     })
   ])
 };

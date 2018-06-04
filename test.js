@@ -14,7 +14,6 @@ const knexConfig = require('./knexfile').development;
 const knex = require('knex')(knexConfig);
 const userService = require('./data/user-svc')(knex);
 
-
 app.get("/test", (req, res) => {
   res.send("Jennnnnnnnifer");
 });
@@ -26,15 +25,17 @@ app.get("/twilio_button", (req, res) => {
 app.get("/", (req, res) => {
   userService.getDishName(1) //
     .then((result) => {
-      // console.log(result);
+      console.log(result);
     });
   res.render("homepage");
 });
 
 app.post("/order", (req, res) => {
-  let custNumber = req.body.customerMsg;
   let custName = req.body.customerName;
-  msg.smsOrder(`${custName}, ${custNumber}`); //sends to chibweeeeee
+  let custNumber = req.body.customerNum;
+  userService.createOrder(custName, custNumber); //data gets inserted to orders table in db
+  userService.getOrderId(msg.smsOrder); //get new order id
+  // msg.smsOrder(`${custName}, ${custNumber}`); //sends to chibweeeeee
   console.log(custNumber, custName)
   res.end();
 })
@@ -48,7 +49,7 @@ app.post("/sms", (req, res) => {
   console.log(`restaurant number is ${restNum}`)
   msg.smsPickupTime(arr[1]);
   console.log(`ORDER_ID '${arr[0]}' PICKUP_TIME '${arr[1]}'`)
-  //insert into db
+  //insert eta into db
   res.writeHead(200, {"Content-Type": "text/xml"});
 })
 
