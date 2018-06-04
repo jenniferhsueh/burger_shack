@@ -61,11 +61,15 @@ app.get("/orders/eta", (req, res) => {
     if(!data[0].eta) {
       res.end();
     } else {
-      console.log('CURRENT ETA',data[0].eta);
       res.send(data[0].eta.toString());
+      console.log('CURRENT ETA',data[0].eta);
+      
+      if(!data[0].eta) {
+        userService.deleteEta(id);
+      }
     }
-    // res.end();
-  });
+  })
+  
   
 })
 

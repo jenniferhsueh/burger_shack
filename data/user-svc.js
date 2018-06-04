@@ -14,8 +14,6 @@ function makeUserService(knex){
       });
   }
 
-
-
   function getOrderId() {
     //EXPLAIN*******
     return knex('orders')
@@ -51,12 +49,20 @@ function makeUserService(knex){
       });
   }
 
+  function deleteEta (id) {
+    return knex('orders')
+      .where('id', id)
+      .select('eta')
+      .del();
+  }
+
   return {
     getDishName,
     getEta,
     getOrderId,
     createOrder,
-    updateEta
+    updateEta,
+    deleteEta
   }
 }
 

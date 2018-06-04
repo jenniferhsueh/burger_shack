@@ -8,9 +8,9 @@ $(document).ready(function() {
     let order = $(this).serialize();
     console.log(order);
     placeOrder(order);
-  });
-  
-  let etaCheck = setInterval(function getEta() {
+
+
+    let etaCheck = setInterval(function getEta() {
       $.ajax({
         url: "/orders/eta",
         method: "GET",
@@ -31,6 +31,29 @@ $(document).ready(function() {
         }
       })
   }, 5000);
+  });
+  
+  // let etaCheck = setInterval(function getEta() {
+  //     $.ajax({
+  //       url: "/orders/eta",
+  //       method: "GET",
+  //       success: function (eta) {
+  //         console.log("EEEETTTTTTAAAAAAA",eta)
+  //         if(!eta) {
+  //           console.log("Waiting on pickup time. It is now:",eta);
+  //         } else {
+  //           let etaSent = $(`<h3>`).addClass("text-light").text(`Pick up your order in ${eta} `);
+  //           console.log("LOG: order eta is",eta);
+  //           $(".checkout").append(etaSent)
+  //           clearInterval(etaCheck)
+  //           // stopGetEta(); //need to stop polling when eta is received.
+  //         }
+  //       },
+  //       error: function(err) {
+  //         console.log(err);
+  //       }
+  //     })
+  // }, 5000);
 
   // let getEta = function () {
   //   setInterval(() => {
@@ -70,7 +93,8 @@ $(document).ready(function() {
       success: function() {
         let orderSent = $(`<h3>`).addClass("text-success").text(`Your order has been placed`)
         $(".checkout-items").empty(); //empty the cart
-        $(".checkout").append(orderSent)
+        $(".checkout").append(orderSent);
+        
         etaCheck;
       },
       error: function(err) {
