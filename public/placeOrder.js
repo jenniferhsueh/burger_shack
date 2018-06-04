@@ -19,7 +19,7 @@ $(document).ready(function() {
           if(!eta) {
             console.log("Waiting on pickup time. It is now:",eta);
           } else {
-            let etaSent = $(`<h3>`).addClass("text-light").text(`Pick up your order in ${eta} `);
+            let etaSent = $(`<h3>`).addClass("text-light").text(`Pick up your order in ${eta} minutes`);
             console.log("LOG: order eta is",eta);
             $(".checkout").append(etaSent)
             clearInterval(etaCheck)
