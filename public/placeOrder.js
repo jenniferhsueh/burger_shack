@@ -13,7 +13,7 @@ $(document).ready(function() {
   let getEta = function () {
     setInterval(() => {
       $.ajax({
-        url: "/sms",
+        url: "/orders/eta",
         method: "GET",
         success: function (eta) {
           let etaSent = $(`<h3>`).addClass("text-light").text(`Pick up your order in ${eta} `);
@@ -43,7 +43,7 @@ $(document).ready(function() {
         let orderSent = $(`<h3>`).addClass("text-success").text(`Your order has been placed`)
         $(".checkout-items").empty(); //empty the cart
         $(".checkout").append(orderSent)
-        
+        getEta();
       },
       error: function(err) {
         console.log(err);

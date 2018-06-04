@@ -34,7 +34,10 @@ app.post("/order", (req, res) => {
   let custName = req.body.customerName;
   let custNumber = req.body.customerNum;
   userService.createOrder(custName, custNumber); //data gets inserted to orders table in db
-  userService.getOrderId(msg.smsOrder); //get new order id
+  userService.getOrderId().then(function(rows) {
+    console.log("FIRST ROWWW", rows[0].id);
+    msg.smsOrder(`${rows[0].id}, ${rows[0].name}, ${rows[0].phone_number}`);
+  }); //get new order id
   // msg.smsOrder(`${custName}, ${custNumber}`); //sends to chibweeeeee
   console.log(custNumber, custName)
   res.end();
@@ -57,9 +60,18 @@ app.post("/sms", (req, res) => {
 })
 
 //get the eta from database (endpoint will change to match data location)
-app.get("/sms", (req, res) => {
-  console.log('from sms endpoint', req.body)
-  res.end()
+app.get("/orders/eta", (req, res) => {
+  userService.getOrderId().then(function(data){
+    if(data) {
+      console.log('CURRENT ETA',data[0].eta);
+      res.send(data[0].eta.toString());
+    } else {
+      res.end();
+    }
+    
+    // res.end();
+  });
+  
 })
 
 

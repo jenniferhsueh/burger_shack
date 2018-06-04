@@ -9,7 +9,7 @@ module.exports = {
   smsOrder : function (varNum) {
     return client.messages 
       .create({
-        body: `New order from ${varNum}`,
+        body: `New order!  #${varNum}`,
         from: "+17782007622",
         to: "+16043352754"
       })

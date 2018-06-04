@@ -5,22 +5,21 @@ function makeUserService(knex){
       .first('*');
   }
   //from restaurant message, in order to fulfil Ajax GET `/eta` request
-  function getEta(eta) {
-    return knex('orders_dishes')
-      .where('eta', eta)
-      .first('*');
+  function getEta(id) {
+    return knex('orders')
+      .where('id', id)
+      .select('eta')
+      .catch((err) => {
+        console.error('OUR ERROR', err);
+      });
   }
 
 
 
-  function getOrderId(message) {
+  function getOrderId() {
     //EXPLAIN*******
     return knex('orders')
       .orderBy('id', 'desc')
-      .then(function(rows) {
-        console.log("FIRST ROWWW", rows[0].id);
-         message(`${rows[0].id}, ${rows[0].name}, ${rows[0].phone_number}`);
-      })
       .catch((err) => {
         console.error('OUR ERROR', err);
       });
