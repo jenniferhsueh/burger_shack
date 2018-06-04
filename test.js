@@ -43,12 +43,15 @@ app.post("/order", (req, res) => {
 app.post("/sms", (req, res) => {
   // console.log('from sms', req.body);
   // const twiml = new MessagingResponse();
-  let reply = req.body.Body; 
-  let arr = reply.split(' ');
+  let reply = req.body.Body; //full reply
+  let arr = reply.split(' '); //full reply being split
+  let orderId = arr[0];
+  let pickUpTime = arr[1];
   let restNum = req.body.From;
   console.log(`restaurant number is ${restNum}`)
-  msg.smsPickupTime(arr[1]);
-  console.log(`ORDER_ID '${arr[0]}' PICKUP_TIME '${arr[1]}'`)
+  msg.smsPickupTime(pickUpTime);
+  userService.updateEta(orderId, pickUpTime)
+  console.log(`ORDER_ID '#${orderId}' PICKUP_TIME '${pickUpTime}'`)
   //insert eta into db
   res.writeHead(200, {"Content-Type": "text/xml"});
 })

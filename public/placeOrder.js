@@ -39,9 +39,8 @@ $(document).ready(function() {
       url: "/order", //use this route to send text
       method: "POST", //goes to test.js - finds this method/route
       data: order,
-      success: function(data) {
-        console.log(data);
-        let orderSent = $(`<h3>`).addClass("text-success").text(`Your order has been placed, eta ${data}`)
+      success: function() {
+        let orderSent = $(`<h3>`).addClass("text-success").text(`Your order has been placed`)
         $(".checkout-items").empty(); //empty the cart
         $(".checkout").append(orderSent)
         

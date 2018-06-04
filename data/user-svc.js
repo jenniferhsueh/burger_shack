@@ -11,19 +11,7 @@ function makeUserService(knex){
       .first('*');
   }
 
-  function createOrder (name, phone_number) {
-    return knex('orders')
-      .insert({
-        'name' : name,
-        'phone_number' : phone_number
-      })
-      .then(() => {
-        console.log('success! order placed');
-      })
-      .catch((err) => {
-        console.error('OUR ERROR', err);
-      });
-  }
+
 
   function getOrderId(message) {
     //EXPLAIN*******
@@ -37,19 +25,40 @@ function makeUserService(knex){
         console.error('OUR ERROR', err);
       });
   }
-
-
-  function getCustomerNumber(order_id) {
-    //number fetching query for sms from restaurant to customer
+  function createOrder (name, phone_number) {
+    return knex('orders')
+      .insert({
+        'name' : name,
+        'phone_number' : phone_number
+      })
+      .then(() => {
+        console.log('success! order placed');
+      })
+      .catch((err) => {
+        console.error('OUR ERROR', err);
+      });
+  }
+  function updateEta(id, eta) {
+    return knex("orders")
+      .where('id', id)
+      .update({
+        'eta' : eta
+      })
+      .then(() => {
+        console.log("PICKUP TIME IS", eta);
+      })
+      .catch((err) => {
+        console.error('OUR ERROR', err);
+      });
   }
 
   return {
     getDishName,
     getEta,
     getOrderId,
-    createOrder
+    createOrder,
+    updateEta
   }
 }
-
 
 module.exports = makeUserService;

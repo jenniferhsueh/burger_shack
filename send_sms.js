@@ -19,7 +19,7 @@ module.exports = {
   smsPickupTime : function (pickupTime) {
     return client.messages 
       .create({
-        body: `Pickup your order in ${pickupTime}`,
+        body: `Pickup your order in ${pickupTime} minutes`,
         from: "+17782007622",
         to: "+16043151860" //customer number
       })
