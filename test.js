@@ -15,7 +15,7 @@ const knex = require('knex')(knexConfig);
 const userService = require('./data/user-svc')(knex);
 
 app.get("/test", (req, res) => {
-  res.send("Jennnnnnnnifer");
+  res.send("testing");
 });
 
 app.get("/twilio_button", (req, res) => {
@@ -34,7 +34,7 @@ app.post("/order", (req, res) => {
     console.log("FIRST ROWWW", rows[0].id);
     msg.smsOrder(`${rows[0].id}, ${rows[0].name}, ${rows[0].phone_number}`);
   }); //get new order id
-  // msg.smsOrder(`${custName}, ${custNumber}`); //sends to chibweeeeee
+  // msg.smsOrder(`${custName}, ${custNumber}`); //sends to chibwe
   console.log(custNumber, custName)
   res.end();
 })
@@ -69,10 +69,7 @@ app.get("/orders/eta", (req, res) => {
       }
     }
   })
-  
-  
 })
-
 
 app.listen(PORT, () => {
   console.log(`Listening to PORT ${PORT}`);
