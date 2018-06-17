@@ -11,7 +11,7 @@ module.exports = {
       .create({
         body: `New order!  #${varNum}`,
         from: "+17782007622",
-        to: "+16043352754"
+        to: "+16043151860"
       })
       .then(message => console.log(message.sid))
       .done();

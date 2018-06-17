@@ -33,9 +33,9 @@ $(document).ready(function() {
   }, 5000);
   });
   
-  let stopGetEta = function () {
-    clearInterval(getEta)
-  }
+  // let stopGetEta = function () {
+  //   clearInterval(getEta)
+  // }
 
   // let orderSent = $(`<h3>`).addClass("text-success").text(`Your order has been placed`);
 
