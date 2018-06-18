@@ -15,12 +15,12 @@ $(document).ready(function() {
         url: "/orders/eta",
         method: "GET",
         success: function (eta) {
-          console.log("ETA",eta)
+          console.log("ETA", eta)
           if(!eta) {
-            console.log("Waiting on pickup time. It is now:",eta);
+            console.log("Waiting on pickup time. It is now:", eta);
           } else {
             let etaSent = $(`<h2>`).addClass("text-light text-center").text(`Pick up your order in ${eta} minutes`);
-            console.log("LOG: order eta is",eta);
+            console.log("LOG: order eta is", eta);
             $(".eta-space").append(etaSent)
             clearInterval(etaCheck)
             // stopGetEta(); //need to stop polling when eta is received.
@@ -30,7 +30,7 @@ $(document).ready(function() {
           console.log(err);
         }
       })
-  }, 5000);
+    }, 5000);
   });
   
   // let stopGetEta = function () {
@@ -49,11 +49,10 @@ $(document).ready(function() {
         // $(".checkout-items").empty(); //empty the cart
         $(".eta-space").append(orderSent);
         $(".custInput").val("");
-        etaCheck;
       },
       error: function(err) {
         console.log(err);
       }
     });
   };
-})
+});

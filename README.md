@@ -1,6 +1,6 @@
 # Burger Shack Project
 
-A food ordering experience for a single restaurant that uses uses git for version control, Bootstrap, HTML, CSS, JS, jQuery and AJAX front-end skills, and Node, Express, PostgreSQL, and knex back-end skills.
+A food ordering app that uses uses git for version control, Bootstrap, HTML, CSS, JS, jQuery and AJAX front-end skills, and Node, Express, PostgreSQL, and knex back-end skills.
 
 Hungry clients of this fictitious restaurant can visit its website, select one or more dishes and place an order for pick-up. They will receive a notification when their order is ready.
 
@@ -14,7 +14,7 @@ Twilio, a modern telecomm API service is used to implement SMS communication fro
 
 1. Fork this repository, then clone your fork of this repository.
 2. Install dependencies using the `npm install` command.
-3. Start the web server using the `npm run local` command. The app will be served at <http://localhost:8080/>.
+3. Start the web server using the `node server.js` command. The app will be served at <http://localhost:8080/>.
 4. Go to <http://localhost:8080/> in your browser.
 
 ## Dependencies
@@ -32,4 +32,11 @@ Twilio, a modern telecomm API service is used to implement SMS communication fro
 !["Screenshot of homepage"](https://github.com/jenniferhsueh/burger_shack/blob/master/docs/homepage.png?raw=true)
 
 !["Screenshot of order_confirmation"](https://github.com/jenniferhsueh/burger_shack/blob/master/docs/order_confirmation.png?raw=true)
+
+!["Screenshot of order_eta"](https://github.com/jenniferhsueh/burger_shack/blob/master/docs/order_eta.png?raw=true)
+
+## Contributors
+
+* <a href="https://github.com/ChibweMw">Chibwe Mweene</a>
+* <a href="https://github.com/jenniferhsueh">Jennifer Hsueh</a>
 
