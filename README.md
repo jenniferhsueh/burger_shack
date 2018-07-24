@@ -1,6 +1,6 @@
 # Burger Shack Project
 
-A food ordering app that uses uses git for version control, Bootstrap, HTML, CSS, JS, jQuery and AJAX front-end skills, and Node, Express, PostgreSQL, and knex back-end skills.
+A food ordering app that uses git for version control, Bootstrap, HTML, CSS, JS, jQuery and AJAX front-end skills, and Node, Express, PostgreSQL, and knex back-end skills.
 
 Hungry clients of this fictitious restaurant can visit its website, select one or more dishes and place an order for pick-up. They will receive a notification when their order is ready.
 
@@ -8,7 +8,7 @@ The restaurant and client will both be notified as this app serves as an interme
 
 When an order is placed the restaurant receives the order via SMS. The restaurant can then specify how long it will take to fulfill it. Once they provide this information, the website updates for the client and also notifies them via SMS.
 
-Twilio, a modern telecomm API service is used to implement SMS communication from the website to the client and restaurant.
+Twilio, a modern telecomm API service, is used to implement SMS communication from the website to the client and restaurant.
 
 ## Getting Started
 
